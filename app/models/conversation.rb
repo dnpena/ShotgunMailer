@@ -3,6 +3,7 @@ class Conversation < ActiveRecord::Base
 
 
 	def get_senders
+		#TODO not add only one, but all participants of the conversation hopefully with no email
 		received = self.emails.select{|e| e.user_id==nil}.first
 		receiver = received ? received.sender : ''
 		sent = self.emails.select{|e| e.user_id!=nil}.first
