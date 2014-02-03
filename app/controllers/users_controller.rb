@@ -44,9 +44,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    @user.email = params[:email]
+    @user.password = (0...10).map{65.+(rand(25)).chr}.join
     respond_to do |format|
-      if @user.save
+      if @user.email && @user.email.include?(ENV['DOMAIN_NAME']) && @user.save
+        @user.email = params[:email_to_send]
         UserMailer.welcome(@user).deliver
         format.html { redirect_to home_path, notice: t('notice.user.create') }
         format.json { render json: @user, status: :created, location: @user }
@@ -55,6 +57,10 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def set_password
+    @user = current_user
   end
 
   # PUT /users/1
@@ -70,6 +76,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(user_params)
+        @user.update_attribute(:first_login, false)
         format.html { redirect_to @user, notice: t('notice.user.update') }
         format.json { head :no_content }
       else
@@ -110,7 +117,7 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :avatar, :avatar_file_name)
+      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :avatar, :avatar_file_name)
     end
 
 

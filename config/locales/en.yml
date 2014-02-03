@@ -42,11 +42,14 @@ en:
       enter_email: "Enter your email and we'll contact you when we are ready:"
       subscribe: "Subscribe"
     register:
-      title: "Register"
-      btn: "Register"
+      title: "Invite user"
+      btn: "Invite"
       btn_update: "Update"
       btn_pass: "Change Password"
       footer: "Already registered? Log in here"
+      new_email: "new.email"
+      email_to_invite: "Email to send invite"
+      new_password: "Write a new password"
     login:
       title: "Log in"
       need_login: "Log in to continue"
@@ -66,7 +69,7 @@ en:
       create: "Thank you for subscribing. You'll receive an email from us soon!"
       error: "This email account is already registered!"
     user:
-      create: "An activation link  for your account was sent to your email"
+      create: "An activation link for the account was sent to the entered email"
       update: "The user was successfully updated"
       activate: "Your account has been ativated"
       unsubscribe: "You will no longer receive this emails"

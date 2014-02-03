@@ -20,4 +20,6 @@
 
 %br
 
-= link_to ' New User', new_user_path, :class => 'btn btn-success btn-lg icon-plus'
+= link_to new_user_path, :class => 'btn btn-success btn-lg' do
+  %i.fa.fa-plus
+  =t('modules.register.title')

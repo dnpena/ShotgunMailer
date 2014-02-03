@@ -35,7 +35,7 @@
         .navbar-header
           %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
             %span.sr-only= t('common.toggle_navigation')
-          %a.navbar-brand{:href => home_path}= ENV['APP_NAME']
+          %a.navbar-brand{:href => root_path}= ENV['APP_NAME']
         %nav.collapse.navbar-collapse.bs-navbar-collapse{:role => "navigation"}
           = render 'layouts/navigation'
 

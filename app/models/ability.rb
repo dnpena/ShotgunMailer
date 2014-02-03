@@ -8,13 +8,13 @@ class Ability
         can :manage, :all
     else
         # global abilities
-        can [:activate], User #not allowed to register [:new, :create]
+        can [:activate, :set_password], User #not allowed to register [:new, :create]
         can [:create, :toggle_value], Email
         # only if the user is logged in
         if user.id!=nil
             # can only update if its his own
             can [:show, :edit, :update], User, id: user.id
-            can [:index, :show], Email#TODO test as not admin and add (or not) conversation
+            can [:index, :show, :new, :send_email], Email
         end
     end
 

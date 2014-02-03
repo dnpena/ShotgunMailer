@@ -1,14 +1,18 @@
--if @user.has_image?
+.centered-container
+  -if @user.has_image?
+    %p
+      = image_tag @user.get_image
   %p
-    = image_tag @user.get_image
-%p
-  %b First name:
-  = @user.first_name
-%p
-  %b Last name:
-  = @user.last_name
-%p
-  %b Email:
-  = @user.email
-
-= link_to 'Edit', edit_user_path(@user), :class => 'btn'
+    %b First name:
+    = @user.first_name
+  %p
+    %b Last name:
+    = @user.last_name
+  %p
+    %b Email:
+    = @user.email
+  
+  = link_to edit_user_path(@user), :class => 'btn btn-default' do
+    %i.fa.fa-pencil
+    Edit
+  

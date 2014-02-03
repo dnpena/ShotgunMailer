@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  $site_url = ENV['DOMAIN_NAME']
+  $site_url = 'http://'+ENV['DOMAIN_NAME']
   default from: "contact@"+ENV['DOMAIN_NAME']
 
   # To unsubscribe from certain emails(must also be the :from of the message. EJ: newsletter@example.com)

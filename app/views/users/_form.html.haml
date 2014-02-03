@@ -6,44 +6,38 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg.html_safe
 
-  -if @user.id #se puede desactivar
+  -if false
     .field
       .icon
         = image_tag @user.get_image(:thumb)
       .col-lg-12
         = f.file_field :avatar, :class => 'form-control file'
 
-    .field
-      .icon
-        %i.fa.fa-user
-          .name-number= '1'
-      .col-lg-12
-        = f.text_field :first_name, :placeholder => t('placeholders.user.first_name'), :class => 'form-control'
-
-    .field
-      .icon
-        %i.fa.fa-user
-          .name-number= '2'
-      .col-lg-12
-        = f.text_field :last_name, :placeholder => t('placeholders.user.last_name'), :class => 'form-control'
+  .field
+    .icon
+      %i.fa.fa-user
+        .name-number= '1'
+    .col-lg-12
+      = f.text_field :first_name, :placeholder => t('placeholders.user.first_name'), :class => 'form-control'
 
   .field
     .icon
-      %i.fa.fa-envelope
+      %i.fa.fa-user
+        .name-number= '2'
     .col-lg-12
-      = f.text_field :email, :placeholder => t('placeholders.user.email'), :class => 'form-control'
+      = f.text_field :last_name, :placeholder => t('placeholders.user.last_name'), :class => 'form-control'
 
   -unless @user.id
     .field
       .icon
-        %i.fa.fa-key
+        %i.fa.fa-envelope
       .col-lg-12
-        = f.password_field :password, :placeholder => t('placeholders.user.password'), :class => 'form-control'
+        = text_field_tag :email, nil, :placeholder => t('modules.register.new_email')+'@'+ENV['DOMAIN_NAME'], :class => 'form-control'
     .field
       .icon
-        %i.fa.fa-lock
+        %i.fa.fa-envelope
       .col-lg-12
-        = f.password_field :password_confirmation, :placeholder => t('placeholders.user.password_confirmation'), :class => 'form-control'
+        = text_field_tag :email_to_send, nil, :placeholder => t('modules.register.email_to_invite'), :class => 'form-control'
   -else 
     .field
       .icon

@@ -42,11 +42,14 @@ es:
       enter_email: "Ingresa tu correo y te notificaremos cuando estemos listos:"
       subscribe: "Subscríbete"
     register:
-      title: "Regístrate"
-      btn: "Regístrate"
+      title: "Invitar usuario"
+      btn: "Invitar"
       btn_update: "Actualizar"
       btn_pass: "Cambiar contraseña"
       footer: "¿Ya tienes cuenta? Ingresa aquí"
+      new_email: "nuevo.correo"
+      email_to_invite: "Email para enviar invitación"
+      new_password: "Escribe una nueva contraseña"
     login:
       title: "Ingresa"
       need_login: "Ingresa para continuar"
@@ -66,7 +69,7 @@ es:
       create: "Gracias por subscribirte. ¡Recibirás pronto un correo de nuestra parte!"
       error: "¡Este correo ya está registrado!"
     user:
-      create: "Se ha enviado un link de activación a tu correo"
+      create: "Se ha enviado un link de activación al correo indicado"
       update: "El usuario se ha actualizado"
       activate: "Tu cuenta ha sido activada"
       unsubscribe: "Ya no recibirás estos correos"

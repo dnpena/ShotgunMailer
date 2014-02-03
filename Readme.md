@@ -22,7 +22,8 @@ Thats it. Now you can send and receive emails
 
 ##Pending Tasks / Ideas
 
-* Handle email in conversations associated with the stripped_subject
+* Only show emails in inbox that are for the user and global
+* Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
 * Add signature to users
 * Better Readme
 * Add email actions ass batch. It should work first selecting emails and then selecting the action.

@@ -13,6 +13,7 @@ DefaultInit::Application.routes.draw do
   post "send_pass_recovery" => "sessions#send_pass_recovery", :as => "send_pass_recovery"
   get "change_password/:token" => "sessions#change_password", :as => "change_password"
   post "do_change_password" => "sessions#do_change_password", :as => "do_change_password"
+  get "set_password" => "users#set_password", :as => "set_password"
 
   #To desuscribe from contact emails
   get "unsubscribe/:token" => "sessions#unsubscribe", :as => "unsubscribe"

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
-  validates_confirmation_of :password, :on => :create
+  validates_confirmation_of :password, :on => :update
   validates_presence_of :password, :on => :create
   validates_length_of :password, :minimum => 4, :on => :create
   validates_presence_of :email

@@ -9,7 +9,6 @@ class EmailsController < ApplicationController
   # GET /emails
   def index
     unless params[:sent]
-      #TODO 
       @emails = Conversation.includes(:emails).where(:archived => params[:archived] ? true : false).order('updated_at desc')
     else
       @emails = Email.where('user_id IS NOT NULL').order('created_at desc')
@@ -27,6 +26,7 @@ class EmailsController < ApplicationController
   end
 
   def toggle_value
+    #TODO authenticate tat the conversation is his to update
     @conv = Conversation.find params[:id]
     if ['archived', 'read', 'answered'].include?(params[:attr])
       val = params[:val]!='true'
@@ -57,6 +57,7 @@ class EmailsController < ApplicationController
     @email = Email.new(email_params)
     if @email.save
       @email.update_attribute(:user_id, current_user.id)
+      @email.update_attribute(:read, true)
       @email.conversation.update_attribute(:read, true)
       @email.conversation.update_attribute(:archived, true)
       @email.conversation.update_attribute(:answered, true)
