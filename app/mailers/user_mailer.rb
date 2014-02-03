@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
-  $site_url = 'http://'+ENV['DOMAIN_NAME']
+  #This domain as http://mail.example.com redirects to the heroku app with a CNAME. This domain needs to be added in the heroku config aswell
+  $site_url = 'http://mail.'+ENV['DOMAIN_NAME']
   default from: "contact@"+ENV['DOMAIN_NAME']
 
   # To unsubscribe from certain emails(must also be the :from of the message. EJ: newsletter@example.com)
