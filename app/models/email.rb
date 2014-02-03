@@ -33,7 +33,7 @@ class Email < ActiveRecord::Base
 		r = ""
 		r += "<br /><br /><br />"
 		r += "On #{self.created_at.strftime('%B %-d, %Y at %H:%M:%S %p')}, #{self.sender} wrote:"
-		r += "<blockquote type=\"cite\" class=\"clean_bq\">"
+		r += "<blockquote type=\"cite\" class=\"clean_bq gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\" >"
 		r = r+body_html+"</blockquote>"
 		return r
 	end
@@ -45,7 +45,7 @@ class Email < ActiveRecord::Base
 	end
 	def find_conversation
 		to_search = self.stripped_subject
-		c = Conversation.where('lower(subject) like ?', '%'+to_search+'%')
+		c = Conversation.order('updated_at desc').where('lower(subject) like ?', '%'+to_search+'%').first
 		#TODO prevent nesting with standard subjects
 		return c ? c.id : nil
 	end

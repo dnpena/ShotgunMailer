@@ -23,7 +23,7 @@ e.body_plain = 'This is a test content for the message.'
 e.body_html = 'This is a <b>test content</b> for the message. <br> '
 #commented reply
 e.body_html += "<br><br>On #{e.created_at.strftime('%B %-d, %Y at %H:%M:%S %p')}, contact@example.com wrote:"
-e.body_html += "<blockquote type=\"cite\" class=\"clean_bq\">"
+e.body_html += "<blockquote type=\"cite\" class=\"clean_bq gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\" >"
 e.body_html += "This is a commented reply from the previous email."
 e.body_html += "</blockquote>"
 #This contains no quotations
