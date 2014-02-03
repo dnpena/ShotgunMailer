@@ -1,6 +1,11 @@
 class EmailsController < ApplicationController
+  
+  skip_before_filter :verify_authenticity_token, :only => [:create]
+
   before_action :set_email, only: [:show, :edit, :update, :destroy, :toggle_value]
 
+  load_and_authorize_resource
+  
   # GET /emails
   def index
     unless params[:sent]
