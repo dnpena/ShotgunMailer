@@ -1,0 +1,18 @@
+<%= render :partial => 'user_mailer/header', :locals => {} %> 
+
+<div style="font-weight: 100; font-size: 15px;" >
+  Hello, <%= @user.first_name %>
+</div>
+
+  
+  <br>
+  You can change your password by clicking the following link: <br>
+  <a href="<%= @url %>"><%= @url %></a>
+
+
+<br><br>
+
+Cheers<br>
+<!-- NAME -->
+
+<%= render :partial => 'user_mailer/footer', :locals => {} %> 

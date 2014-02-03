@@ -1,0 +1,55 @@
+.email
+
+  %h1= @archived ? 'Showing Archive' : (@archived ? 'Sent emails' : 'Inbox')
+
+  = link_to emails_path(), class: 'btn btn-default '+(!(@archived||@sent) ? 'disabled' : '') do
+    %i.fa.fa-inbox
+    Show Inbox
+  = link_to emails_path(archived: true), class: 'btn btn-default '+((@archived) ? 'disabled' : '') do
+    %i.fa.fa-archive
+    Show Archived
+  = link_to emails_path(sent: true), class: 'btn btn-default '+((@sent) ? 'disabled' : '') do
+    %i.fa.fa-envelope
+    Show Sent
+  &nbsp;&nbsp;&nbsp;
+  = link_to new_email_path, class: 'btn btn-info' do
+    %i.fa.fa-edit
+    New Email
+  %br
+  %br
+
+  %table.table
+    %tr
+      %th Sender
+      %th Recipient
+      %th Subject
+      %th Answered
+      %th
+      %th
+      %th
+      %th
+
+    - @emails.each do |email|
+      %tr{class: email.read ? '' : 'alert-warning'}
+        %td
+          = email.sender
+          -if @sent
+            %br
+            =link_to email.user do
+              (#{email.user.to_s})
+        %td= email.recipient
+        %td= link_to email.subject, email
+        %td
+          %i.fa{class: email.answered ? 'fa-check' : 'fa-times'}
+        %td
+          = link_to email do
+            %i.fa.fa-folder-open-o Show
+        %td
+          = link_to toggle_value_path(email.id,'archived',val: email.archived) do
+            %i.fa{class: email.archived ? 'fa-inbox' : 'fa-archive'} #{email.archived ? 'Una' : 'A'}rchive
+        %td
+          = link_to email, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+            %i.fa.fa-trash-o Delete
+
+  %br
+

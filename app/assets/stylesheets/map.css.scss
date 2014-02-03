@@ -1,0 +1,29 @@
+@import "functions";
+.home.map{
+	// Map Container
+	.map-wrapper{
+		position: relative;
+		max-height: 500px;
+		overflow: hidden;
+		margin: -5px; //!Fix
+		margin-top: -20px; //!Fix
+		#map_canvas{
+			width: 100%;
+			min-height: 525px;
+		}
+		.floating-info{
+			position: absolute;
+			top: 150px;
+			left: 100px;
+			z-index: 100;
+			background: white;
+			width: 400px;
+			padding	: 20px;
+			@include radius(10px);
+		}
+		.content-text{
+
+		}
+	}
+	// END Map
+}

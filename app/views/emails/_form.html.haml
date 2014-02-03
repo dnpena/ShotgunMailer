@@ -1,0 +1,38 @@
+= form_for @original_email||@email, :url => @url ? @url : @original_email do |f|
+  - if @email.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@email.errors.count, "error")} prohibited this email from being saved:"
+      %ul
+        - @email.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label 'From: '
+    = f.select :sender, [[current_user.to_email],["Contacto RLEE <contacto@rlee.la>"]], {}, :class => 'form-control' #TODO add based on role
+  .field
+    = f.label 'To: '
+    = f.text_field :recipient, class: 'form-control', value: @inv ? @email.recipient : @email.sender, "data-provide"  =>  "typeahead", "data-items" => "4", :autocomplete  => "off" , "data-source"=> @recipients 
+  .field
+    = f.label 'Subject: '
+    = f.text_field :subject, class: 'form-control', value: @email.subject.include?('Re:')||!@original_email ? @email.subject : 'Re: '+@email.subject
+  .field
+    = f.label 'Content: '
+    = f.text_area :body_html, class: 'form-control email-body', value: @email.get_body
+  .actions
+    %br
+    = f.submit 'Send', class: 'btn btn-default pull-right'
+
+:javascript
+  $('select option').each(function(){$(this).text($(this).attr('value'))})
+  $('#email_body_html').wysihtml5({
+    "lists": false,
+    "events": {
+      "load": function(){
+        // console.log("1")
+        // $('.reply-modal').click(function(){
+        //   console.log("2")
+        //   setdata($(this))
+        // })
+      }
+    }
+  })

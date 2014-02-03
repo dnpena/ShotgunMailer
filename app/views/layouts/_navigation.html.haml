@@ -1,0 +1,20 @@
+%ul.nav.navbar-nav.pull-right
+	- if current_user
+		%li{:class => 'emails'==controller.controller_name ? 'active' : ''}
+			= link_to 'Inbox', emails_path
+		- if (can? :manage, :admin)
+			%li.divider
+			-#To add graphs and stats %li{:class => 'admins'==controller.controller_name ? 'active' : ''}
+				= link_to admins_dashboard_path do
+					%em=t('common.admin.dashboard')
+			%li{:class => 'index'==controller.action_name&&'users'==controller.controller_name ? 'active' : ''}
+				= link_to users_path do
+					%em=t('common.admin.users')
+			%li.divider
+		%li 
+			= link_to current_user.to_s, user_path(current_user)
+		%li 
+			= link_to t('common.nav.logout'), log_out_path
+	- else
+		%li 
+			= link_to t('common.nav.login'), log_in_path

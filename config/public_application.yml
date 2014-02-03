@@ -1,0 +1,8 @@
+# Add application configuration variables here, as shown below.
+MAILGUN_USERNAME: postmaster@example.com
+MAILGUN_PASSWORD: XXXXXXXXXXX
+S3_KEY_ID: XXXXXXXXXXX
+S3_SECRET_ACCESS_KEY: XXXXXXXXXXXXXXXXXXXX
+
+APP_NAME: "Shotgun Mailer"
+DOMAIN_NAME: example.com

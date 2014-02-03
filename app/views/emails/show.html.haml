@@ -1,0 +1,51 @@
+.email
+  = link_to emails_path, class: 'btn btn-default' do
+    %i.fa.fa-arrow-left
+    Back
+  = link_to toggle_value_path(@email.id,'archived',val: @email.archived), class: 'btn btn-default' do
+    %i.fa{class: @email.archived ? 'fa-inbox' : 'fa-archive'}
+    #{@email.archived ? 'Una' : 'A'}rchive
+  = link_to toggle_value_path(@email.id,'answered',val: @email.answered), class: 'btn btn-default' do
+    %i.fa{class: @email.answered ? 'fa-thumbs-down' : 'fa-thumbs-up'}
+    Mark as #{@email.answered ? 'una' : 'a'}nswered
+  = link_to '#modal', class: 'btn btn-default reply-modal '+(@email.answered ? 'btn-success' : '') do
+    %i.fa.fa-reply
+    Repl#{@email.answered ? 'ied' : 'y'}
+  %br
+  %br
+  %p
+    %b From:
+    = @email.sender
+  %p
+    %b To:
+    = @email.recipient
+  %p
+    %b Subject:
+    = @email.subject
+  .panel-group#accordion
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title
+          %a{'data-toggle' => "collapse", 'data-parent'=>"#accordion", href: "#collapse_0"}
+            Message from: #{@email.sender}
+          %span.pull-right= @email.created_at.strftime('%d/%m/%Y %H:%M')
+      #collapse_0.panel-collapse.collapse{class: @answers.length>0 ? '' : 'in'}
+        .panel-body
+          = @email.body_html ? @email.body_html.html_safe : @email.body_plain.html_safe
+    -if @answers.length>0
+      - i = 0
+      - @answers.each do |a|
+        - i+=1
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a{'data-toggle' => "collapse", 'data-parent'=>"#accordion", href: '#collapse_'+i.to_s}
+                Reply from: #{a.sender}  (Sent by #{a.user.to_s})
+              %span.pull-right= a.created_at.strftime('%d/%m/%Y %H:%M')
+          .panel-collapse.collapse{class: i==@answers.length ? 'in' : '', id: 'collapse_'+i.to_s}
+            .panel-body
+              = a.body_html ? a.body_html.html_safe : a.body_plain
+
+
+  = render partial: 'emails/reply', locals: {:@email => (@answers.length>0 ? @answers.last : @email), :@inv => @answers.length>0}
+

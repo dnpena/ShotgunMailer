@@ -1,0 +1,13 @@
+#replyModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+	.modal-dialog{style: 'width: 60%;'}
+		.modal-content
+			.modal-header
+				%button.close.close-modal{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+				%h4.modal-title Reply to #{@email.sender}
+			.modal-body
+				=render partial: "emails/form"
+				.row
+					&nbsp;
+/ .modal-footer
+/   %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+/   %button.btn.btn-primary{:type => "button"} t('common.forms.save')
