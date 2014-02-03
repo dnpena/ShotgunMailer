@@ -60,7 +60,7 @@ group :production do
   gem 'pg'
 end
 gem "unicorn", ">= 4.3.1" #servidor con multithread en producion
-#gem 'newrelic_rpm'
+gem 'newrelic_rpm'
 #gem 'delayed_job_active_record'
 gem 'rails_12factor', group: :production #compatibilidad con rails 4
 # gem 'protected_attributes'
