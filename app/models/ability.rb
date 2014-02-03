@@ -9,11 +9,12 @@ class Ability
     else
         # global abilities
         can [:activate], User #not allowed to register [:new, :create]
-        can [:index, :show], Email#TODO test as not admin and add (or not) conversation
+        can [:create], Email
         # only if the user is logged in
         if user.id!=nil
             # can only update if its his own
             can [:show, :edit, :update], User, id: user.id
+            can [:index, :show], Email#TODO test as not admin and add (or not) conversation
         end
     end
 
