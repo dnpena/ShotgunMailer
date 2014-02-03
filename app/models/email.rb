@@ -39,13 +39,13 @@ class Email < ActiveRecord::Base
 	end
 
 	def stripped_subject
-		new_sub = self.subject.to_s.strip #'Re: asdf asdf asdf asd'
+		new_sub = self.subject.to_s.strip
 		to_search = new_sub.index('Re: ')==0 ? new_sub[4..-1] : new_sub
 		return to_search
 	end
 	def find_conversation
 		to_search = self.stripped_subject
-		c = Conversation.order('updated_at desc').where('lower(subject) like ?', '%'+to_search+'%').first
+		c = Conversation.order('updated_at desc').where('subject = ?', to_search).first
 		#TODO prevent nesting with standard subjects
 		return c ? c.id : nil
 	end
