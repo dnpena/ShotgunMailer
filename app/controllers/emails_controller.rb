@@ -36,7 +36,6 @@ class EmailsController < ApplicationController
     @email = Email.new
     @email.subject = ''
     @recipients = Email.select(:recipient).where(:user_id => current_user.id).group(:recipient).collect(&:recipient).to_s
-    puts @recipients.to_s
     @url = send_email_path
   end
 

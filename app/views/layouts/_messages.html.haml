@@ -1,5 +1,12 @@
 - flash.each do |name, msg|
   - if msg.is_a?(String)
-    %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+    %div{:class => "alert alert-success", style: 'position: absolute; z-index: 1000; width: 100%; text-align: center'}
       %a.close{"data-dismiss" => "alert"} ×
       = content_tag :div, msg, :id => "flash_#{name}"
+
+:javascript
+  $(document).ready(function(){
+  	setTimeout(function(){
+  		$('.alert.alert-success').hide()
+  	}, 2500)
+  })
