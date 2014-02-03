@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203132451) do
+ActiveRecord::Schema.define(version: 20140203154712) do
 
   create_table "blacklists", force: true do |t|
     t.string   "email_to"
     t.string   "email_from"
     t.boolean  "global"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.boolean  "read",       default: false
+    t.boolean  "archived",   default: false
+    t.boolean  "answered",   default: false
+    t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -9,7 +9,7 @@ class Ability
     else
         # global abilities
         can [:activate], User #not allowed to register [:new, :create]
-        can [:create], Email
+        can [:create, :toggle_value], Email
         # only if the user is logged in
         if user.id!=nil
             # can only update if its his own

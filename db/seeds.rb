@@ -17,8 +17,8 @@ admin.update_attribute :active, true
 admin.update_attribute :admin, true
 
 #Test Emails
-#TODO Sample conversation
-e = Email.create({sender: 'welcome@example.com', recipient: 'contact@example.com', subject: 'Welcome to ShotgunMailer'})
+c = Conversation.create({subject: 'Welcome to ShotgunMailer'})
+e = Email.create({sender: 'welcome@example.com', recipient: 'contact@example.com', subject: c.subject, conversation_id: c.id})
 e.body_plain = 'This is a test content for the message.'
 e.body_html = 'This is a <b>test content</b> for the message. <br> '
 #commented reply

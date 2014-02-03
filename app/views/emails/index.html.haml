@@ -1,6 +1,6 @@
 .email
 
-  %h1= @archived ? 'Showing Archive' : (@archived ? 'Sent emails' : 'Inbox')
+  %h1= @archived ? 'Archived conversations' : (@sent ? 'Sent emails' : 'Inbox')
 
   = link_to emails_path(), class: 'btn btn-default '+(!(@archived||@sent) ? 'disabled' : '') do
     %i.fa.fa-inbox
@@ -20,35 +20,43 @@
 
   %table.table
     %tr
+      -unless @sent
+        %th{style: 'max-width: 50px; text-align: center'} Answered
       %th Sender
-      %th Recipient
+      -#%th Recipient
       %th Subject
-      %th Answered
-      %th
+      %th Updated
       %th
       %th
       %th
 
     - @emails.each do |email|
+      -last_email = @sent ? email : email.emails.last
       %tr{class: email.read ? '' : 'alert-warning'}
-        %td
-          = email.sender
+        -unless @sent
+          %td{style: 'max-width: 50px; text-align: center'}
+            %i.fa{class: email.answered ? 'fa-check' : 'fa-times'}
+        %td.sender
+          .senders
+            = @sent ? email.sender : email.get_senders
+          .counter
+            = @sent ? '' : email.get_counter
           -if @sent
             %br
             =link_to email.user do
               (#{email.user.to_s})
-        %td= email.recipient
-        %td= link_to email.subject, email
+        -#%td= email.recipient
+        %td= link_to email.subject, last_email
+        %td= email.updated_at.strftime('%b %d')
         %td
-          %i.fa{class: email.answered ? 'fa-check' : 'fa-times'}
-        %td
-          = link_to email do
+          = link_to last_email do
             %i.fa.fa-folder-open-o Show
+        -unless @sent
+          %td
+            = link_to toggle_value_path(email.id,'archived',val: email.archived) do
+              %i.fa{class: email.archived ? 'fa-inbox' : 'fa-archive'} #{email.archived ? 'Una' : 'A'}rchive
         %td
-          = link_to toggle_value_path(email.id,'archived',val: email.archived) do
-            %i.fa{class: email.archived ? 'fa-inbox' : 'fa-archive'} #{email.archived ? 'Una' : 'A'}rchive
-        %td
-          = link_to email, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+          = link_to last_email, :method => :delete, :data => { :confirm => 'Are you sure?' } do
             %i.fa.fa-trash-o Delete
 
   %br

@@ -2,14 +2,15 @@ class EmailsController < ApplicationController
   
   skip_before_filter :verify_authenticity_token, :only => [:create]
 
-  before_action :set_email, only: [:show, :edit, :update, :destroy, :toggle_value]
+  before_action :set_email, only: [:show, :edit, :update, :destroy]
 
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:toggle_value]
   
   # GET /emails
   def index
     unless params[:sent]
-      @emails = Email.where(:archived => params[:archived] ? true : false, :user_id => nil).order('created_at desc')
+      #TODO 
+      @emails = Conversation.includes(:emails).where(:archived => params[:archived] ? true : false).order('updated_at desc')
     else
       @emails = Email.where('user_id IS NOT NULL').order('created_at desc')
     end
@@ -19,17 +20,20 @@ class EmailsController < ApplicationController
 
   # GET /emails/1
   def show
-    @original_email = @email
-    @email.update_attribute(:read, true)
-    @answers = []#Email.where(:convesation_id => @email.id)
+    @email.save
+    @conv = @email.conversation
+    @conv.update_attribute(:read, true)
+    @emails = Email.where(:conversation_id => @conv.id)
   end
 
   def toggle_value
+    @conv = Conversation.find params[:id]
     if ['archived', 'read', 'answered'].include?(params[:attr])
       val = params[:val]!='true'
-      @email.update_attribute(params[:attr], val)
+      @conv.update_attribute(params[:attr], val)
       if ['answered'].include?(params[:attr])
-        redirect_to email_path(params[:id]), notice: "Email was marked as #{(val ? '' : 'un')+params[:attr]}."
+        last_email = @conv.emails.last
+        redirect_to email_path(last_email.id), notice: "Email was marked as #{(val ? '' : 'un')+params[:attr]}."
       else
         redirect_to emails_path, notice: "Email was marked as #{(val ? '' : 'un')+params[:attr]}."
       end
@@ -80,11 +84,12 @@ class EmailsController < ApplicationController
   # PATCH/PUT /emails/1
   def update
     @reply = Email.new(email_params)
-    # @reply.conversation_id = @email.id
+    @reply.conversation_id = @email.conversation_id
     @reply.user_id = current_user.id
     @reply.save
 
-    @email.update_attribute(:answered, true)
+    @conv = @email.conversation
+    @conv.update_attribute(:answered, true)
 
     UserMailer.shotgun_email(@reply).deliver
 

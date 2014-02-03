@@ -23,7 +23,9 @@ Thats it. Now you can send and receive emails
 ##Pending Tasks / Ideas
 
 * Handle email in conversations associated with the stripped_subject
+* Add signature to users
 * Better Readme
+* Add email actions ass batch. It should work first selecting emails and then selecting the action.
 * Add a little AJAX
 * Add a different admin interface, with basic usage graphs
 * Implement a robust and hopefully Rest API

@@ -1,7 +1,17 @@
 class Email < ActiveRecord::Base
 
 	belongs_to :user
+	belongs_to :conversation
 
+	before_save :start_conversation
+
+	def start_conversation
+		if self.conversation_id==nil
+			c = Conversation.create({subject: self.stripped_subject})
+	    	self.conversation_id = c.id
+	    end
+	end
+	
 	def get_body
 		body_html = ''
 		begin

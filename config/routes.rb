@@ -24,6 +24,7 @@ DefaultInit::Application.routes.draw do
   #Email handling
   post "/send_email" => "emails#send_email", :as => "send_email"
   resources :emails
+  # get "/conversations/:id" => "emails#show", :as => "conversation"
   get "/toggle/:id/:attr" => "emails#toggle_value", :as => "toggle_value"
   
   get "inbox" => "emails#index", :as => "home"
