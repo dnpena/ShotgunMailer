@@ -55,10 +55,11 @@ class EmailsController < ApplicationController
   # POST /emails
   def send_email
     @email = Email.new(email_params)
-
     if @email.save
       @email.update_attribute(:user_id, current_user.id)
-      @email.update_attribute(:read, true)
+      @email.conversation.update_attribute(:read, true)
+      @email.conversation.update_attribute(:archived, true)
+      @email.conversation.update_attribute(:answered, true)
       UserMailer.shotgun_email(@email).deliver
       return redirect_to emails_path, notice: 'Email was successfully sent.'
     else
