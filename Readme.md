@@ -22,6 +22,8 @@ Thats it. Now you can send and receive emails
 
 ##Pending Tasks / Ideas
 
+* When the inbox is empty, show "INBOX ZERO"
+* Create a Demo with link to heroku
 * Only show emails in inbox that are for the user or taht are global
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
 * Add pagination to emails
