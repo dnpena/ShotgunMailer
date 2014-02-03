@@ -22,12 +22,13 @@ Thats it. Now you can send and receive emails
 
 ##Pending Tasks / Ideas
 
-* Only show emails in inbox that are for the user and global
+* Only show emails in inbox that are for the user or taht are global
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
+* Add pagination to emails
 * Add signature to users
-* Better Readme
-* Add email actions ass batch. It should work first selecting emails and then selecting the action.
-* Add a little AJAX
+* Better Readme and documentation
+* Add email actions as batch. It should work first selecting emails and then selecting the action.
+* Add a little AJAX or Angular.js
 * Add a different admin interface, with basic usage graphs
 * Implement a robust and hopefully Rest API
 * ...
