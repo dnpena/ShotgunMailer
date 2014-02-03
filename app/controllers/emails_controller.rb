@@ -76,6 +76,11 @@ class EmailsController < ApplicationController
     @email.conversation_id = @email.find_conversation
 
     if @email.save
+      if @email.conversation
+        @email.conversation.update_attribute(:read, false)
+        @email.conversation.update_attribute(:answered, false)
+        @email.conversation.update_attribute(:archived, false)
+      end
       return render nothing: true, code: 200
     else
       return render nothing: true, code: 500

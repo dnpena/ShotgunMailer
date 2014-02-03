@@ -47,6 +47,10 @@ class Email < ActiveRecord::Base
 		to_search = self.stripped_subject
 		c = Conversation.order('updated_at desc').where('subject = ?', to_search).first
 		#TODO prevent nesting with standard subjects
+		email = self.sender
+		if c && (c.emails.map{|e| e.sender}+c.emails.map{|e| e.recipient}).select{|e| e==email}.empty?()
+			c = nil
+		end
 		return c ? c.id : nil
 	end
 
