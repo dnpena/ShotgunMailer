@@ -32,7 +32,7 @@
             %span.pull-right= e.created_at.strftime('%d/%m/%Y %H:%M')
         .panel-collapse.collapse{class: i==@emails.length ? 'in' : '', id: 'collapse_'+i.to_s}
           .panel-subtitle 
-            to
+            %i to:
             =e.recipient
           .panel-body
             = e.body_html ? e.body_html.html_safe : e.body_plain.html_safe

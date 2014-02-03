@@ -73,6 +73,7 @@ class EmailsController < ApplicationController
     @email_params[:body_html] = @email_params['body-html']
     ['body-plain', 'body-html', 'stripped-html'].collect{|p| @email_params.delete(p) }
     @email = Email.new(@email_params)
+    @email.conversation_id = @email.find_conversation
 
     if @email.save
       return render nothing: true, code: 200

@@ -9,6 +9,10 @@ class Email < ActiveRecord::Base
 		if self.conversation_id==nil
 			c = Conversation.create({subject: self.stripped_subject})
 	    	self.conversation_id = c.id
+	    	if self.user_id!=nil #an email being sent
+	    		c.update_attribute(:read, true)
+	    		c.update_attribute(:archived, true)
+	    	end
 	    end
 	end
 	
@@ -37,7 +41,13 @@ class Email < ActiveRecord::Base
 	def stripped_subject
 		new_sub = self.subject.to_s.strip #'Re: asdf asdf asdf asd'
 		to_search = new_sub.index('Re: ')==0 ? new_sub[4..-1] : new_sub
-		#Email.where('lower(subject) like ?', '%'+to_search+'%')
 		return to_search
 	end
+	def find_conversation
+		to_search = self.stripped_subject
+		c = Conversation.where('lower(subject) like ?', '%'+to_search+'%')
+		#TODO prevent nesting with standard subjects
+		return c ? c.id : nil
+	end
+
 end
