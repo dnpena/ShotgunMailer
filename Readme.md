@@ -48,7 +48,7 @@ If you add functionality to this application, create an alternative implementati
 
 ##Credits
 
-Developed by Max Findel & the team at [Brainshots](http://brainshots.cl)
+Developed by [Max Findel](https://github.com/maxfindel) & the team at [Brainshots](http://brainshots.cl)
 
 
 
