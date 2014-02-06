@@ -1,7 +1,8 @@
 #ShotgunMailer
 
-ShotgunMailer allows you to handle multiple custom email accounts without losing any information. If you handle an organization where everyone sends emails to everyone, you want to have some control and avoid double answers and inconsistency. (And avoid paying 5USD per account)
+ShotgunMailer allows you to handle multiple custom email accounts without losing any information. If you handle an organization where everyone sends emails to everyone, you want to have some control and avoid double answers and inconsistency. (And avoid paying 5USD per account. Your server, your money.)
 
+Power your organization email adress using ShotgunMailer!
 <!-- SAMPLE IMAGE -->
 
 ##Getting started
@@ -14,14 +15,16 @@ To handle the DNS, I recommend using [Cloudflare](http://cloudflare.com) and fol
 
 Now, by clicking on the MailGun add on you will be on your account. Here you should follow the oficial [documentation](http://documentation.mailgun.com/quickstart.html#verifying-your-domain) and **verify your domain**. This could take a while.  
 
-You should rename the *config/public_application.yml* to *config/application.yml*(and add a S3 account for Avatars). Once you have your user/pass, copy them in the *config/application.yml* file. Remember to upload the ENV variables with `rake figaro:heroku` and restarte your server to test locally.  
+You should rename the *config/public_application.yml* to *config/application.yml*(and optionally add a S3 account for Avatars). Once you have your user/pass, copy them in the *config/application.yml* file. Remember to upload the ENV variables with `rake figaro:heroku` and restart your server to test locally.  
   
-Now for the last part, you need to setup your MailGun Routes in the routes tab. You should make all routes send the emails as post to *http://example.herokuapp.com/emails* so that they appear on your inbox.
+Now for the last part, you need to setup your MailGun Routes in the routes tab accessed through Heroku. You should make all routes send the emails as post to *http://example.herokuapp.com/emails* so that they appear on your inbox.
 
-Thats it. Now you can send and receive emails 
+Thats it. Now you can send and receive emails as *.@example.com
 
 ##Pending Tasks / Ideas
 
+* Replies the wrong adress when you hit reply
+* .gitignore add config/newrelic.yml
 * When the inbox is empty, show "INBOX ZERO"
 * Create a Demo with link to heroku
 * Only show emails in inbox that are for the user or taht are global
