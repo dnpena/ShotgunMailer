@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   end
 
 
-  def map
-    @hide_header = true
+  def home
+    
   end
 
 end
