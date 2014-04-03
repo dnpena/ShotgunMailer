@@ -33,7 +33,7 @@ class Email < ActiveRecord::Base
 		r = ""
 		r += "<br /><br /><br />"
 		r += "On #{self.created_at.strftime('%B %-d, %Y at %H:%M:%S %p')}, #{self.sender} wrote:"
-		r += "<blockquote type=\"cite\" class=\"clean_bq gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\" >"
+		r += "<blockquote style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\" >"
 		r = r+body_html+"</blockquote>"
 		return r
 	end
