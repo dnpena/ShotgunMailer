@@ -32,7 +32,7 @@ class Email < ActiveRecord::Base
 		end
 		r = ""
 		r += "<br /><br /><br />"
-		r += "#{e.created_at.strftime('%Y-%m-%d %H:%M:%S %p')} #{self.sender}:"
+		r += "#{self.created_at.strftime('%Y-%m-%d %H:%M:%S %p')} #{self.sender}:"
 		r += "<blockquote style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\" >"
 		r = r+body_html+"</blockquote>"
 		return r
