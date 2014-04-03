@@ -24,11 +24,11 @@ Thats it. Now you can send and receive emails as *.@example.com
 ##Pending Tasks / Ideas
 
 * Replies the wrong adress when you hit reply
-* .gitignore add config/newrelic.yml
+* Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
 * When the inbox is empty, show "INBOX ZERO"
-* Create a Demo with link to heroku
-* Only show emails in inbox that are for the user or taht are global
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
+* Only show emails in inbox that are for the user or that are global
+* Create a Demo with link to heroku
 * Add pagination to emails
 * Add signature to users
 * Better Readme and documentation
