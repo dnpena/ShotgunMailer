@@ -21,11 +21,11 @@ c = Conversation.create({subject: 'Welcome to ShotgunMailer'})
 e = Email.create({sender: 'welcome@example.com', recipient: 'contact@example.com', subject: c.subject, conversation_id: c.id})
 e.body_plain = 'This is a test content for the message.'
 e.body_html = 'This is a <b>test content</b> for the message. <br> '
-#commented reply
-e.body_html += "<br><br>#{e.created_at.strftime('%Y-%m-%d %H:%M:%S %p')} contact@example.com:"
-e.body_html += '<blockquote type="cite" class="clean_bq gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex" >'
-e.body_html += "This is a commented reply from the previous email."
-e.body_html += "</blockquote>"
+#commented reply TODO gmail quote div
+# e.body_html += "<br><br>#{e.created_at.strftime('%Y-%m-%d %H:%M:%S %p')} contact@example.com:"
+# e.body_html += '<blockquote type="cite" class="clean_bq gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex" >'
+# e.body_html += "This is a commented reply from the previous email."
+# e.body_html += "</blockquote>"
 #This contains no quotations
 e.stripped_html = 'This is a <b>test content</b> for the message'
 e.save

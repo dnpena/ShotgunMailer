@@ -31,10 +31,16 @@ class Email < ActiveRecord::Base
 			end
 		end
 		r = ""
-		r += "<br /><br /><br />"
+		r += '<div class="gmail_extra">'
+		r += "<br><br>"
+		r += '<div class="gmail_quote">'
 		r += "#{self.created_at.strftime('%Y-%m-%d %H:%M:%S %p')} #{self.sender}:"
-		r += '<blockquote type="cite" class="clean_bq gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex" >'
-		r = r+body_html+"</blockquote>"
+		r += "<br>"
+		r += '<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex" >'
+		r = r+body_html
+		r += "</blockquote>"
+		r += "</div>"
+		r += "</div>"
 		return r
 	end
 
