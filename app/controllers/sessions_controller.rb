@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
   
   def destroy
     session[:user_id] = nil
-    return redirect_to home_path
+    return redirect_to root_path
   end
 
   def unsubscribe
