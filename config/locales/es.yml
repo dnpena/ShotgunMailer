@@ -80,6 +80,7 @@ es:
       pass_changed: "La contraseña ha sido cambiada"
   common:
     app_desc: "¡Potencia el correo electrónico de tu organización utilizando ShotgunMailer!"
+    app_contact: "Contacto"
     toggle_navigation: "Invertir navegación"
     nav:
       register: "Regístrate"

@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : ENV['APP_NAME']
+      %title= content_for?(:title) ? yield(:title) : ENV['INBOX_NAME']
       %meta{:content => content_for?(:description) ? yield(:description) : t('common.app_desc'), :name => "description"}
       %link{:rel=>"icon", :type => "image/ico", :href => "/assets/shotgun-favicon.ico"}
       = stylesheet_link_tag "application", :media => "all" #, "data-turbolinks-track" => true
@@ -23,7 +23,7 @@
         %link{ :rel => "image_src",  :href => "/assets/logocuadrado.png" }
         %meta{ :property=>"og:image" , :content=>"/assets/logocuadrado.png" }
         %meta{ :property=>"og:type" , :content=>"company" }
-        %meta{ :property=>"og:site_name" , :content=> ENV['APP_NAME'] }
+        %meta{ :property=>"og:site_name" , :content=> ENV['INBOX_NAME'] }
         %meta{ :property=>"og:url" , :content=> ENV['DOMAIN_NAME'] }
         %meta{ :property=>"og:description",  :content=> t('common.app_desc') }
       -# Keywords for google & ownership verification metatag example
@@ -36,7 +36,7 @@
         .navbar-header
           %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
             %span.sr-only= t('common.toggle_navigation')
-          %a.navbar-brand{:href => root_path}= ENV['APP_NAME']
+          %a.navbar-brand{:href => root_path}= ENV['INBOX_NAME']
         %nav.collapse.navbar-collapse.bs-navbar-collapse{:role => "navigation"}
           = render 'layouts/navigation'
 

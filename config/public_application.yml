@@ -1,8 +1,15 @@
 # Add application configuration variables here, as shown below.
 MAILGUN_USERNAME: postmaster@example.com
 MAILGUN_PASSWORD: XXXXXXXXXXX
+#if you want to upload your own avatars
 S3_KEY_ID: XXXXXXXXXXX
 S3_SECRET_ACCESS_KEY: XXXXXXXXXXXXXXXXXXXX
 
+#used in the title of the page
+INBOX_NAME: "Inbox Shotgun Mailer"
+#used everywhere else
 APP_NAME: "Shotgun Mailer"
+#used in the contact@example.com email address
+APP_CONTACT: contact
+#used in all addresses
 DOMAIN_NAME: example.com
