@@ -23,7 +23,8 @@ Thats it. Now you can send and receive emails as *.@example.com
 
 ##Pending Tasks / Ideas
 
-* Replies the wrong adress when you hit reply
+* Add CC & BCC
+* Use the mailgun gem: gem 'mailgun', '~> 0.7'
 * Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
 * When the inbox is empty, show "INBOX ZERO"
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)

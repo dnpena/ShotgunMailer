@@ -19,7 +19,7 @@ class UserMailer < ActionMailer::Base
 
   def shotgun_email(email)
     @email = email
-    mail(:to => email.recipient, :from => email.sender, :subject => email.subject)
+    mail(:to => email.recipient, :cc => email.cc, :bcc => email.bcc, :from => email.sender, :subject => email.subject)
   end
 
   def feedback(user)

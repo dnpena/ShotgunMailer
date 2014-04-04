@@ -119,7 +119,7 @@ class EmailsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def email_params
       begin
-        params.require(:email).permit(:sender, :recipient, :subject, :body_html)
+        params.require(:email).permit(:sender, :recipient, :subject, :body_html, :cc, :bcc)
       rescue
         params.permit(:sender, :recipient, :subject, 'body-plain', 'stripped-html', 'body-html')
       end
