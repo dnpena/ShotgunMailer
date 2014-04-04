@@ -60,4 +60,13 @@ class Email < ActiveRecord::Base
 		return c ? c.id : nil
 	end
 
+	#To separate emails by comma
+	def self.separate(str)
+		arr = str.split ","
+		arr.each do |a|
+			a = a.strip
+		end
+		return arr
+	end
+
 end
