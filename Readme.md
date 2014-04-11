@@ -24,7 +24,7 @@ Thats it. Now you can send and receive emails as *.@example.com
 ##Pending Tasks / Ideas
 
 * Separate emails when adding commas. Use some tag-input css & js
-* Use the mailgun gem: gem 'mailgun', '~> 0.7' ?
+* Soft delete conversations
 * Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
 * When the inbox is empty, show "INBOX ZERO"
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
