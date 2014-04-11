@@ -10,6 +10,7 @@ class CreateEmails < ActiveRecord::Migration
       t.boolean :answered, default: false
       t.boolean :read, default: false
       t.boolean :archived, default: false
+      t.boolean :spam, default: false
       t.integer :conversation_id
       t.integer :user_id
       t.string :cc

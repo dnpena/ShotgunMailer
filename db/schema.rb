@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140411201936) do
     t.datetime "updated_at"
     t.string   "cc"
     t.string   "bcc"
-    t.boolean  "spam"
+    t.boolean  "spam",            default: false
   end
 
   create_table "spams", force: true do |t|
