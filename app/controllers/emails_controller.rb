@@ -11,7 +11,7 @@ class EmailsController < ApplicationController
     unless params[:sent]
       @emails = Conversation.includes(:emails).where(:archived => params[:archived] ? true : false).order('updated_at desc')
     else
-      @emails = Email.where('user_id IS NOT NULL').order('created_at desc')
+      @emails = Email.where(spam: false).where('user_id IS NOT NULL').order('created_at desc')
     end
     @archived = params[:archived]
     @sent = params[:sent]
@@ -76,7 +76,10 @@ class EmailsController < ApplicationController
     ['body-plain', 'body-html', 'stripped-html'].collect{|p| @email_params.delete(p) }
     @email = Email.new(@email_params)
     @email.conversation_id = @email.find_conversation
-
+    # We check if it's in the spam list. If that is the case, no conversation is created
+    if Spam.search_pattern(@email.sender)
+      @email.spam = true
+    end
     if @email.save
       if @email.conversation
         @email.conversation.update_attribute(:read, false)

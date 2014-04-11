@@ -6,7 +6,7 @@ class Email < ActiveRecord::Base
 	before_save :start_conversation
 
 	def start_conversation
-		if self.conversation_id==nil
+		if self.conversation_id==nil&&self.spam!=true
 			c = Conversation.create({subject: self.stripped_subject})
 	    	self.conversation_id = c.id
 	    	if self.user_id!=nil #an email being sent
