@@ -12,6 +12,8 @@ class CreateEmails < ActiveRecord::Migration
       t.boolean :archived, default: false
       t.integer :conversation_id
       t.integer :user_id
+      t.string :cc
+      t.string :bcc
 
       t.timestamps
     end

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.where('email IS NOT ?', 'contacto@brainshots.cl').order('id ASC')
 
     respond_to do |format|
       format.html # index.html.erb
