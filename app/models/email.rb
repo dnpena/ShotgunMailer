@@ -69,4 +69,9 @@ class Email < ActiveRecord::Base
 		return arr
 	end
 
+	def destroy
+		self.conversation.destroy
+		super
+	end
+
 end
