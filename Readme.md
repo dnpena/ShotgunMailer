@@ -18,7 +18,7 @@ Clone this repo, push it to [Heroku](http://heroku.com)(from now on http://examp
 
 To handle the DNS, I recommend using [Cloudflare](http://cloudflare.com) and following this heroku [documentation](http://www.higherorderheroku.com/articles/cloudflare-dns-heroku/).  
 
-Now, by clicking on the MailGun add on you will be on logged on to your account. Here you should follow the oficial [documentation](http://documentation.mailgun.com/quickstart.html#verifying-your-domain) and **verify your domain**. This could take a while on their end. Make sure you setup the "Spam Filter Settings" to send the emails but with flags.   
+Now, by clicking on the MailGun add on you will be on logged on to your account. Here you should follow the oficial [documentation](http://documentation.mailgun.com/quickstart.html#verifying-your-domain) and **verify your domain**. This could take a while on their end. Make sure you setup the "Spam Filter Settings" to deliver the emails but with flags.   
 
 You should rename the *config/public_application.yml* to *config/application.yml*(and optionally add a S3 account for Avatars). Once you have your user/pass, copy them in the *config/application.yml* file. Remember to upload the ENV variables with `rake figaro:heroku` and restart your server to test locally.  
   
@@ -30,16 +30,17 @@ Thats it. Now you can send and receive emails as **@yourdomain.com
 
 * Separate emails when adding commas. Use some tag-input css & js
 * Soft delete conversations
-* Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
 * Ability to mark emails and senders as spam
+* Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
 * See the senders "real name" and not just the ugly email
 * When the inbox is empty, show "INBOX ZERO"
 * Check events authenticity with Mailgun's signature
 * New design like Airmail or something
+* Add tests
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
 * Only show emails in inbox that are for the user or that are global
 * Create a Demo with link to heroku
-* Add pagination to emails
+* Add pagination to emails (scroll down and pull to refresh?)
 * Add signature to users
 * Add email actions as batch. It should work first selecting emails and then selecting the action.
 * Add a little AJAX and/or Angular.js
