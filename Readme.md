@@ -29,6 +29,7 @@ Thats it. Now you can send and receive emails as **@yourdomain.com
 ##Pending Tasks / Ideas
 
 * Separate emails when adding commas. Use some tag-input css & js
+* Close & capture css inside emails & change links to open in new tab (iframe?)
 * Soft delete conversations
 * Ability to mark emails and senders as spam
 * Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
