@@ -2,9 +2,9 @@
 
 ShotgunMailer shoots your organization's email hassle in the face!  
 
-If you work on an organization where everyone sends emails to everyone and uses shared addresses like contact@yourdomain.com, this is for you. And did I mention it is FREE?
+If you work on an organization that uses shared addresses like contact@yourdomain.com or sales@yourdomain.com, this is for you. If you just want a serious and private email address, this is also for you. And did I mention it is FREE?
 
-You really want to have some control over your emails and avoid double answers and inconsistency.  
+With ShotgunMailer you have more control over your organization's emails and you can avoid double answers and inconsistency.
 (And it doesn't have to cost you 5USD per account. It's your server, your privacy, your money.)
 
 Power your organization emails using ShotgunMailer!
