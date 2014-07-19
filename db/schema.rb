@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411201541) do
+ActiveRecord::Schema.define(version: 20140719221927) do
 
   create_table "blacklists", force: true do |t|
     t.string   "email_to"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140411201541) do
     t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",    default: false
   end
 
   create_table "emails", force: true do |t|
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140411201541) do
     t.string   "bcc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",         default: false
   end
 
   create_table "spams", force: true do |t|

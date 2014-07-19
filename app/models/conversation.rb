@@ -1,4 +1,5 @@
 class Conversation < ActiveRecord::Base
+
 	has_many :emails, conditions: { spam: false }, order: 'updated_at asc'
 
 
@@ -10,7 +11,13 @@ class Conversation < ActiveRecord::Base
 		sender = sent ? (received ? ', ' : '')+sent.sender : ''
 		return receiver+sender
 	end
+
 	def get_counter
 		return ' ('+self.emails.length.to_s+')'
+	end
+
+	def destroy
+		self.update_attribute :deleted, true
+		self.emails.update_all deleted: true
 	end
 end

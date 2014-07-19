@@ -71,7 +71,6 @@ class Email < ActiveRecord::Base
 
 	def destroy
 		self.conversation.destroy
-		super
 	end
 
 end

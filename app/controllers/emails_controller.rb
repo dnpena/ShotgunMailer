@@ -8,8 +8,8 @@ class EmailsController < ApplicationController
   
   # GET /emails
   def index
-    unless params[:sent]
-      @emails = Conversation.includes(:emails).where(:archived => params[:archived] ? true : false).order('updated_at desc')
+    if params[:sent]==nil
+      @emails = Conversation.includes(:emails).where(:deleted => false, :archived => params[:archived] ? true : false).order('updated_at desc')
     else
       @emails = Email.where(spam: false).where('user_id IS NOT NULL').order('created_at desc')
     end
