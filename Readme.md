@@ -37,16 +37,17 @@ Thats it. Now you can send and receive emails as **@yourdomain.com
 * Separate emails when adding commas. Use some tag-input css & js
 * Check events authenticity with Mailgun's signature?
 * New design like Airmail or something
-* Add tests
+* Add Atachments to emails
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
 * Only show emails in inbox that are for the user or that are global
-* Create a Demo with link to heroku
 * Add pagination to emails (scroll down and pull to refresh?)
-* Add signature to users
 * Add email actions as batch. It should work first selecting emails and then selecting the action.
+* Add signature to users (dynamic signatures?)
 * Add a little AJAX and/or Angular.js
+* Add tests
 * Add a different admin interface, with basic usage graphs
 * Implement a robust and hopefully somewhat Restful API using INBOX
+* Create a Demo with link to heroku
 * Use central domain shotgunmailer.com
 * Make mobile apps and dream on
 * ...
