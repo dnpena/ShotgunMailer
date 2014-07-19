@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.where(active: true).order('id ASC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       if @user.email && @user.email.include?(ENV['DOMAIN_NAME']) && @user.save
         @user.email = params[:email_to_send]
         UserMailer.welcome(@user).deliver
-        format.html { redirect_to home_path, notice: t('notice.user.create') }
+        format.html { redirect_to inbox_path, notice: t('notice.user.create') }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -106,7 +106,7 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     # Borramos para no acumular basura
     @token.destroy
-    redirect_to home_path, notice: t('notice.user.activate')
+    redirect_to inbox_path, notice: t('notice.user.activate')
   end
 
   private

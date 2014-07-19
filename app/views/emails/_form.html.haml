@@ -8,10 +8,17 @@
 
   .field
     = f.label 'From: '
-    = f.select :sender, [[current_user.to_email],["Contacto RLEE <contacto@rlee.la>"]], {}, :class => 'form-control' #TODO add based on role
-  .field
+    = f.select :sender, [[current_user.to_email],["#{t('common.app_contact')} #{ENV["APP_NAME"]} <#{ENV["APP_CONTACT"]+"@"+ENV["DOMAIN_NAME"]}>"]], {}, :class => 'form-control' #TODO add based on role
+  .field.opt-holder
     = f.label 'To: '
-    = f.text_field :recipient, class: 'form-control', value: @inv ? @email.recipient : @email.sender, "data-provide"  =>  "typeahead", "data-items" => "4", :autocomplete  => "off" , "data-source"=> @recipients 
+    = f.text_field :recipient, class: 'form-control', value: @inv ? @email.sender : @email.recipient, "data-provide"  =>  "typeahead", "data-items" => "4", :autocomplete  => "off" , "data-source"=> @recipients 
+    =link_to "Mostrar CC & BCC", '#', class: 'floating-option'
+  .field.cc
+    = f.label 'CC: '
+    = f.text_field :cc, class: 'form-control', "data-provide"  =>  "typeahead", "data-items" => "4", :autocomplete  => "off" , "data-source"=> @recipients 
+  .field.cc
+    = f.label 'BCC: '
+    = f.text_field :bcc, class: 'form-control', "data-provide"  =>  "typeahead", "data-items" => "4", :autocomplete  => "off" , "data-source"=> @recipients 
   .field
     = f.label 'Subject: '
     = f.text_field :subject, class: 'form-control', value: @email.subject.include?('Re:')||!@original_email ? @email.subject : 'Re: '+@email.subject

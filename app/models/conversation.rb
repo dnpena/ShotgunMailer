@@ -1,5 +1,5 @@
 class Conversation < ActiveRecord::Base
-	has_many :emails, order: 'updated_at asc'
+	has_many :emails, conditions: { spam: false }, order: 'updated_at asc'
 
 
 	def get_senders

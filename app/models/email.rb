@@ -6,7 +6,7 @@ class Email < ActiveRecord::Base
 	before_save :start_conversation
 
 	def start_conversation
-		if self.conversation_id==nil
+		if self.conversation_id==nil&&self.spam!=true
 			c = Conversation.create({subject: self.stripped_subject})
 	    	self.conversation_id = c.id
 	    	if self.user_id!=nil #an email being sent
@@ -31,10 +31,16 @@ class Email < ActiveRecord::Base
 			end
 		end
 		r = ""
-		r += "<br /><br /><br />"
-		r += "On #{self.created_at.strftime('%B %-d, %Y at %H:%M:%S %p')}, #{self.sender} wrote:"
-		r += "<blockquote type=\"cite\" class=\"clean_bq gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\" >"
-		r = r+body_html+"</blockquote>"
+		r += '<div class="gmail_extra">'
+		r += "<br><br>"
+		r += '<div class="gmail_quote">'
+		r += "#{self.created_at.strftime('%Y-%m-%d %H:%M:%S %p')} #{self.sender}:"
+		r += "<br>"
+		r += '<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex" >'
+		r = r+body_html
+		r += "</blockquote>"
+		r += "</div>"
+		r += "</div>"
 		return r
 	end
 
@@ -52,6 +58,20 @@ class Email < ActiveRecord::Base
 			c = nil
 		end
 		return c ? c.id : nil
+	end
+
+	#To separate emails by comma
+	def self.separate(str)
+		arr = str.split ","
+		arr.each do |a|
+			a = a.strip
+		end
+		return arr
+	end
+
+	def destroy
+		self.conversation.destroy
+		super
 	end
 
 end

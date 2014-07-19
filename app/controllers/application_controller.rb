@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   
   #En caso de faltar permisos con CanCan
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
+    redirect_to log_in_path, :alert => exception.message
   end
 
   before_filter :check_first_login

@@ -9,3 +9,8 @@ $ ->
 		else
 			e.preventDefault();
 			$("#replyModal").modal('show')
+
+	$('.floating-option').click ->
+		$(this).hide();
+		$('.cc').show();
+		$('input.shorter').removeClass('.shorter')

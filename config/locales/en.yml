@@ -80,6 +80,7 @@ en:
       pass_changed: "The password has been changed"
   common:
     app_desc: "Power your organization email adress using ShotgunMailer!"
+    app_contact: "Contact"
     toggle_navigation: "Toggle navigation"
     nav:
       register: "Register"

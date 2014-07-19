@@ -11,7 +11,7 @@ class EmailsController < ApplicationController
     unless params[:sent]
       @emails = Conversation.includes(:emails).where(:archived => params[:archived] ? true : false).order('updated_at desc')
     else
-      @emails = Email.where('user_id IS NOT NULL').order('created_at desc')
+      @emails = Email.where(spam: false).where('user_id IS NOT NULL').order('created_at desc')
     end
     @archived = params[:archived]
     @sent = params[:sent]
@@ -26,7 +26,7 @@ class EmailsController < ApplicationController
   end
 
   def toggle_value
-    #TODO authenticate tat the conversation is his to update
+    #TODO authenticate that the conversation is his to update
     @conv = Conversation.find params[:id]
     if ['archived', 'read', 'answered'].include?(params[:attr])
       val = params[:val]!='true'
@@ -76,7 +76,10 @@ class EmailsController < ApplicationController
     ['body-plain', 'body-html', 'stripped-html'].collect{|p| @email_params.delete(p) }
     @email = Email.new(@email_params)
     @email.conversation_id = @email.find_conversation
-
+    # We check if it's in the spam list. If that is the case, no conversation is created
+    if Spam.search_pattern(@email.sender)
+      @email.spam = true
+    end
     if @email.save
       if @email.conversation
         @email.conversation.update_attribute(:read, false)
@@ -119,7 +122,7 @@ class EmailsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def email_params
       begin
-        params.require(:email).permit(:sender, :recipient, :subject, :body_html)
+        params.require(:email).permit(:sender, :recipient, :subject, :body_html, :cc, :bcc)
       rescue
         params.permit(:sender, :recipient, :subject, 'body-plain', 'stripped-html', 'body-html')
       end
