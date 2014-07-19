@@ -61,7 +61,7 @@ module DefaultInit
         :authentication => :plain,
         :address => "smtp.mailgun.org",
         :port => 587,
-        :domain => "rlee.la",
+        :domain => ENV["MAILGUN_DOMAIN"],
         :user_name => ENV["MAILGUN_USERNAME"],
         :login => ENV["MAILGUN_USERNAME"],
         :password => ENV["MAILGUN_PASSWORD"],

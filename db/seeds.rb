@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #Admin user
-admin = User.where(:email => 'admin@example.com').first_or_create
+admin = User.where(:email => 'admin@'+ENV["MAILGUN_DOMAIN"]).first_or_create
 admin.password = 'admin'
 admin.password_confirmation = 'admin'
 admin.first_name = 'My'
