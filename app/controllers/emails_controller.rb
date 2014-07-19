@@ -26,7 +26,7 @@ class EmailsController < ApplicationController
   end
 
   def toggle_value
-    #TODO authenticate tat the conversation is his to update
+    #TODO authenticate that the conversation is his to update
     @conv = Conversation.find params[:id]
     if ['archived', 'read', 'answered'].include?(params[:attr])
       val = params[:val]!='true'
