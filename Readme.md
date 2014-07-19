@@ -46,6 +46,7 @@ Thats it. Now you can send and receive emails as **@yourdomain.com
 * Add a little AJAX and/or Angular.js
 * Add tests
 * Add a different admin interface, with basic usage graphs
+* Setup alternative_email to send notifications to(as an alert)
 * Implement a robust and hopefully somewhat Restful API using INBOX
 * Create a Demo with link to heroku
 * Use central domain shotgunmailer.com
