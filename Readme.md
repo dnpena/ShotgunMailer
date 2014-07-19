@@ -7,7 +7,7 @@ If you work on an organization that uses shared addresses like contact@yourdomai
 With ShotgunMailer you have more control over your organization's emails and you can avoid double answers and inconsistency.
 (And it doesn't have to cost you 5USD per account. It's your server, your privacy, your money.)
 
-On the other side, if you just want to have a mailbox of your own, this is a very private (and nice) way of doing so.
+On the other hand, if you just want to have a mailbox of your own, this is a very private (and nice) way of having one.
 <!-- SAMPLE IMAGE -->
 
 ##Getting started
