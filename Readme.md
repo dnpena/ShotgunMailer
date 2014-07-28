@@ -28,14 +28,15 @@ Thats it. Now you can send and receive emails as **@yourdomain.com
 
 ##Pending Tasks / Ideas
 
-* Ability to mark emails and senders as spam
+* Ability to mark emails and senders as spam and see them in a spam folder
 * Upgrade to a stable version of bootstrap 3
 * Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
+* Separate emails when adding commas. Use some tag-input css & js
+* *New design like Airmail or something*
 * See the senders "real name" and not just the ugly email
 * When the inbox is empty, show "INBOX ZERO"
-* Separate emails when adding commas. Use some tag-input css & js
+* Autodelete spam after 15 days
 * Check events authenticity with Mailgun's signature?
-* *New design like Airmail or something*
 * Add Atachments to emails
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
 * Only show emails in inbox that are for the user or that are global
