@@ -9,3 +9,4 @@
 ##Email handling
 
 * Close & capture css inside emails & change links to open in new tab using an iframe.
+* Soft delete conversations

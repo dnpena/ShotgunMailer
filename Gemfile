@@ -7,7 +7,7 @@ gem 'rails', '4.0.1'
 group :development, :test do
   gem 'progress_bar' #para mostrar una progressbar en la consola en procesos largos
   gem 'rack-mini-profiler' #para mostrar estadísticas de velocidad y queries en las vistas
-  gem "rails-erd" #para generar diagramas E-R de la base de datos. Uso: rake erd
+  gem 'railroady' #para generar diagramas E-R de la base de datos. Uso: rake diagram:all
   gem "rename" #para cambiarle el nombre(y la carpeta) a la app con: rails g rename:app_to DefaultInit
   gem 'hirb' #mejora como se muestran las respuestas de tablas de rails c. Uso: Hirb.enable
   gem "quiet_assets", ">= 1.0.2" #para no mostrar cuando se cargan las assets en el log

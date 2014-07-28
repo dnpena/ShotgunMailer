@@ -28,8 +28,8 @@ Thats it. Now you can send and receive emails as **@yourdomain.com
 
 ##Pending Tasks / Ideas
 
-* Soft delete conversations
 * Ability to mark emails and senders as spam
+* Upgrade to a stable version of bootstrap 3
 * Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
 * See the senders "real name" and not just the ugly email
 * When the inbox is empty, show "INBOX ZERO"
