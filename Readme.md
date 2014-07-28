@@ -32,7 +32,7 @@ Thats it. Now you can send and receive emails as **@yourdomain.com
 * Upgrade to a stable version of bootstrap 3
 * Deliver spam, but add X-Mailgun-SFlag and X-Mailgun-SScore headers
 * Separate emails when adding commas. Use some tag-input css & js
-* *New design like Airmail or something*
+* **New design like Airmail or something**
 * See the senders "real name" and not just the ugly email
 * When the inbox is empty, show "INBOX ZERO"
 * Autodelete spam after 15 days
