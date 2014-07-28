@@ -35,7 +35,7 @@ Thats it. Now you can send and receive emails as **@yourdomain.com
 * When the inbox is empty, show "INBOX ZERO"
 * Separate emails when adding commas. Use some tag-input css & js
 * Check events authenticity with Mailgun's signature?
-* New design like Airmail or something
+* *New design like Airmail or something*
 * Add Atachments to emails
 * Add the ability to create 'groups' so that some can send and receive as that address(work@example.com)
 * Only show emails in inbox that are for the user or that are global
