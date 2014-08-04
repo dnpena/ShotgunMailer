@@ -29,3 +29,39 @@ $ ->
 		$html.find('a').attr('target','_blank')
 		doc.write($html.html())
 		doc.close();
+
+	$('.mails-btn').click (e) ->
+		e.preventDefault()
+		path = $(this).attr('href')
+		$.ajax path,
+		type: 'GET'
+		dataType: 'html'
+		data: {mail_id: $('this').attr('id')}
+		error: (jqXHR, textStatus, errorThrown) ->
+			$('body').append "AJAX Error: #{textStatus}"
+		success: (data, textStatus, jqXHR) ->
+			mail = $.parseJSON(data)
+			for key, value of mail
+
+					$('.navigation').html(value[0].subject)
+					panel_primerio = $("<div/>").addClass "panel panel-primary"
+					$('.actual-email').html(panel_primerio).css('visibility', 'visible');
+
+					for a, b of value
+						console.log b
+						panHeading = $("<div/>").addClass "panel-heading"
+						panelFrom = $("<div/>").addClass "from"
+						panelFrom.html(b.sender)
+						panHeading.append(panelFrom)
+						
+						panelBody = $("<div/>").addClass "panel-body"
+						paneltext = $("<div/>").addClass "mail-text"
+						paneltext.html(b.content).append(b.contenthtml)	
+						panelBody.append(paneltext)
+						$('.panel.panel-primary').append(panHeading).append(panelBody)
+
+	$('.checky').click ->
+		$(this).hide();
+
+	
+		

@@ -1,0 +1,21 @@
+%ul.nav
+  %li
+    = link_to emails_path(), class: 'btn square-btn'+(!(@archived||@sent) ? ' disabled' : '') do
+      %i.fa.fa-inbox
+      %span{:style=>'text-align: center'} Show Inbox
+  %li
+    = link_to emails_path(archived: true), class: 'btn square-btn'+((@archived) ? ' disabled' : '') do
+      %i.fa.fa-archive
+      %span{:style=>'text-align: center'} Show Archived
+  %li
+    = link_to emails_path(sent: true), class: 'btn square-btn'+((@sent) ? ' disabled' : '') do
+      %i.fa.fa-envelope
+      %span{:style=>'text-align: center'} Show Sent
+  %li
+    = link_to emails_path(spam: true), class: 'btn square-btn'+((@spam) ? ' disabled' : '') do
+      %i.fa.fa-envelope
+      %span{:style=>'text-align: center'} Spam 
+  %li
+    = link_to new_email_path, class: 'btn square-btn' do
+      %i.fa.fa-edit 
+      %span{:style=>'text-align: center'} New Email

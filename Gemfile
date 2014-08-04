@@ -74,5 +74,6 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails',
                               :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
 
-
+#gem forjdibfiajdwf
+gem 'jbuilder'
 

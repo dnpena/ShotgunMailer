@@ -5,7 +5,7 @@ DefaultInit::Application.routes.draw do
   get "home/index"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
-  # get "sign_up" => "users#new", :as => "sign_up"
+  get "sign_up" => "users#new", :as => "sign_up"
   get "activate/:token" => "users#activate", :as => "activate"
 
   #Recover pass
@@ -25,7 +25,7 @@ DefaultInit::Application.routes.draw do
   #Email handling
   post "/send_email" => "emails#send_email", :as => "send_email"
   resources :emails
-  # get "/conversations/:id" => "emails#show", :as => "conversation"
+  get "/conversations/:id" => "emails#show", :as => "conversation"
   get "/toggle/:id/:attr" => "emails#toggle_value", :as => "toggle_value"
   
   get "inbox" => "emails#index", :as => "inbox"

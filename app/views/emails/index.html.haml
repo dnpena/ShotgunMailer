@@ -1,63 +1,30 @@
-.email
+.email.index
+  .buttons_navigation
+    =render partial:"left_navigation"
+    
+  .emails_list
+    =render partial:"emails_navigation"
 
-  %h1= @archived ? 'Archived conversations' : (@sent ? 'Sent emails' : 'Inbox')
+  .mail_panel
+    .navigation
+      -# = link_to emails_path(), class: 'btn btn-default square-btn'+((@archived||@sent) ? 'disabled' : '') do
+      -#   %span{:style=>'text-align: center'} Show Inbox
+      -#   %i.fa.fa-inbox
 
-  = link_to emails_path(), class: 'btn btn-default '+(!(@archived||@sent) ? 'disabled' : '') do
-    %i.fa.fa-inbox
-    Show Inbox
-  = link_to emails_path(archived: true), class: 'btn btn-default '+((@archived) ? 'disabled' : '') do
-    %i.fa.fa-archive
-    Show Archived
-  = link_to emails_path(sent: true), class: 'btn btn-default '+((@sent) ? 'disabled' : '') do
-    %i.fa.fa-envelope
-    Show Sent
-  &nbsp;&nbsp;&nbsp;
-  = link_to new_email_path, class: 'btn btn-info' do
-    %i.fa.fa-edit
-    New Email
-  %br
-  %br
+      -# = link_to emails_path(archived: true), class: 'btn btn-default square-btn'+((@archived) ? 'disabled' : '') do
+      -#   %span{:style=>'text-align: center'} Archive
+      -#   %i.fa.fa-archive
 
-  %table.table
-    %tr
-      -unless @sent
-        %th{style: 'max-width: 50px; text-align: center'} Answered
-      %th Sender
-      -#%th Recipient
-      %th Subject
-      %th Updated
-      %th
-      %th
-      %th
+      -# = link_to emails_path(sent: true), class: 'btn btn-default square-btn'+((@sent) ? 'disabled' : '') do
+      -#   %i.fa.fa-envelope
+      -#   %span{:style=>'text-align: center'} Show Sent
 
-    - @emails.each do |email|
-      -last_email = @sent ? email : email.emails.last
-      %tr{class: email.read ? '' : 'alert-warning'}
-        -unless @sent
-          %td{style: 'max-width: 50px; text-align: center'}
-            %i.fa{class: email.answered ? 'fa-check' : 'fa-times'}
-        %td.sender
-          .senders
-            = @sent ? email.sender : email.get_senders
-          .counter
-            = @sent ? '' : email.get_counter
-          -if @sent
-            %br
-            =link_to email.user do
-              (#{email.user.to_s})
-        -#%td= email.recipient
-        %td= link_to email.subject, last_email
-        %td= email.updated_at.strftime('%b %d')
-        %td
-          = link_to last_email do
-            %i.fa.fa-folder-open-o Show
-        -unless @sent
-          %td
-            = link_to toggle_value_path(email.id,'archived',val: email.archived) do
-              %i.fa{class: email.archived ? 'fa-inbox' : 'fa-archive'} #{email.archived ? 'Una' : 'A'}rchive
-        %td
-          = link_to last_email, :method => :delete, :data => { :confirm => 'Are you sure?' } do
-            %i.fa.fa-trash-o Delete
+    .actual-email
+      .panel.panel-primary
+        -# .panel-heading
+        -#   .from
+        -# .panel-body
+        -#   .mail-text
+        =render partial:"emails_accordeon"
 
-  %br
-
+ 

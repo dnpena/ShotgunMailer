@@ -40,13 +40,11 @@
         %nav.collapse.navbar-collapse.bs-navbar-collapse{:role => "navigation"}
           = render 'layouts/navigation'
 
-    .content
-      .row
-        .container
-          = render 'layouts/messages'
-          -unless current_user
-            = render partial: "sessions/login"
-          = yield
+    .span
+      = render 'layouts/messages'
+    -unless current_user
+      = render partial: "sessions/login"
+    = yield
 
     %footer
       .footer_social

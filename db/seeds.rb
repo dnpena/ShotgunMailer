@@ -29,3 +29,6 @@ e.body_html = 'This is a <b>test content</b> for the message. <br> '
 #This contains no quotations
 e.stripped_html = 'This is a <b>test content</b> for the message'
 e.save
+
+
+

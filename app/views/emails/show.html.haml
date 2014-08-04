@@ -37,8 +37,6 @@
           .panel-body
             %iframe.html-capsule{src: "about:blank", body_html: e.body_html, body_plain: e.body_plain}
             -# e.body_html ? e.body_html.html_safe : e.body_plain.html_safe
-
-
   = render partial: 'emails/reply', locals: {:@email => (@emails.length>0 ? @emails.last : @email), :@inv => @emails.length>0}
 
 

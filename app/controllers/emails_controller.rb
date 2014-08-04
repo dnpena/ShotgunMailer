@@ -9,7 +9,11 @@ class EmailsController < ApplicationController
   # GET /emails
   def index
     if params[:sent]==nil
-      @emails = Conversation.includes(:emails).where(:deleted => false, :archived => params[:archived] ? true : false).order('updated_at desc')
+      @conversations = Conversation.includes(:emails).where(:deleted => false, :archived => params[:archived] ? true : false).order('updated_at desc')
+      @emails = @conversations.first.emails
+      # @emails = Email.all
+    elsif params[:spam] ==true
+      @emails = Email.where(spam: true).where('user_id IS NOT NULL').order('created_at desc')
     else
       @emails = Email.where(spam: false).where('user_id IS NOT NULL').order('created_at desc')
     end
@@ -19,10 +23,11 @@ class EmailsController < ApplicationController
 
   # GET /emails/1
   def show
-    @email.save
+    # @email.save
     @conv = @email.conversation
     @conv.update_attribute(:read, true)
     @emails = Email.where(:conversation_id => @conv.id)
+
   end
 
   def toggle_value

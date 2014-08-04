@@ -19,7 +19,6 @@ class UserMailer < ActionMailer::Base
 
   def shotgun_email(email)
     @email = email
-
     mail(:to => Email.separate(email.recipient), :cc => Email.separate(email.cc), :bcc => Email.separate(email.bcc), :from => email.sender, :subject => email.subject)
   end
 
@@ -37,9 +36,7 @@ class UserMailer < ActionMailer::Base
     @subject = subject
     @content = content
     @user = User.new
-    
     @url  = $site_url
-
     mail(:to => "contact@"+ENV['DOMAIN_NAME'], :from => email, :subject => "Contact")
   end
 

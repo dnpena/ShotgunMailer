@@ -5,19 +5,87 @@
 @import "functions";
 @import "coloresw8";
 
-.email{
+
+.email.index{
 	font-size: 15px;
-	.panel-body, .email-body{
-		padding: 15px;
-		height: 400px;
-		overflow: none;
+	height: 100%;
+	display: inline-flex;
+	width: 100%;
+	
+	.buttons_navigation{
+		width: 20%;
+		margin-right: 0px;
+		background-color: #282828;
+		color: #C0C0C0;
+		
+		%span{
+			color: #FFFFFF;
+		}
+		.disabled{
+			color: #E0E0E0;
+		}
+		
 	}
-	.panel-subtitle{
-		padding: 15px;
-		padding-bottom: 5px;
-		padding-top: 5px;
-		color: #666;
+	.emails_list{
+		width: 35%;
+		.container-search{
+				width: 100%;
+				display: inline-flex;
+			.search_bar{
+				margin:3%; 
+				width: 80%;
+			}
+			.search_button{
+				margin:3%; 
+				width: 20%;
+				border: 1px;
+			}
+		}
+
+		.mails-btn{
+			border: 0px;
+		}
 	}
+
+	.mail_panel{
+		width: 45%;
+		// visibility: hidden;
+
+		.navigation{
+			background-color: #484857;
+			height: 100px;
+			padding: 5px;
+			width: 100%;
+			display: inline-block;
+			.square-btn.btn{
+				margin-top: 5px;
+				width: 130px;
+				@include radius(0px);
+			}
+		}
+		.actual-email{
+			height: 400px;
+		}
+		.panel.panel-primary{
+			border-radius: 0px;
+			margin: 10px;
+			border-color: #383838;
+		}
+		.panel-heading{
+			border-radius: 0px;
+			border-color: #383838;
+		}
+		.panel-body{
+		border-radius: 0px;
+		border-color: #383838;
+		}
+		.panel-body{
+		border-radius: 0px;
+		border-color: #383838;
+		}
+	
+	}
+
 	td.sender{
 		width: 250px;
 	}
@@ -25,10 +93,19 @@
 		@include cutText(200px);
 		float: left;
 	}
+	.subjects{
+		color: #C0C0C0;
+		font-size: small;
+	}
 	.counter{
 		display: inline;
 	}
+	.ul{
+		padding-left: 0px;
+	}
+
 }
+
 .html-capsule{
 	border: none;
 	width: 100%;
