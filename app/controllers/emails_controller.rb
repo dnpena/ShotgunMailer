@@ -17,6 +17,7 @@ class EmailsController < ApplicationController
     else
       @emails = Email.where(spam: false).where('user_id IS NOT NULL').order('created_at desc')
     end
+    
     @archived = params[:archived]
     @sent = params[:sent]
   end
