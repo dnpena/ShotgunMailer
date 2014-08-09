@@ -11,9 +11,9 @@
       .col-md-1
         %i.fa.fa-user
       .col-md-9
-        = link_to email_path(conv,'json'),id: "mail #{conv.id}",class: conv.read ? 'btn btn-default square-btn mails-btn' : 'btn btn-default alert-warning square-btn mails-btn'  do
+        = link_to email_path(conv,'js'),id: "mail #{conv.id}",class: conv.read ? 'btn btn-default square-btn mails-btn' : 'btn btn-default alert-warning square-btn mails-btn'  do
           %td.senders
-            = @sent ? conv.sender : conv.get_senders
+            = @sent ? conv.get_senders : conv.get_senders
             .subjects
               = @sent ? conv.subject : conv.subject
   -else

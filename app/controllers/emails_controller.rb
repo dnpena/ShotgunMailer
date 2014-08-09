@@ -8,14 +8,15 @@ class EmailsController < ApplicationController
   
   # GET /emails
   def index
-    if params[:sent]==nil
-      @conversations = Conversation.includes(:emails).where(:deleted => false, :archived => params[:archived] ? true : false, :spam => params[:spam] ? true : false).order('updated_at desc')
+    if params[:sent]==nil and params[:spam]==nil and params[:archived]==nil
+      @conversations = Conversation.includes(:emails).where(:deleted => false, :archived => false, :spam => false).order('updated_at desc')
+    elsif params[:sent] ==true
+      @conversations = Conversation.includes(:emails).where(sent: true).where('user_id IS NOT NULL').order('created_at desc')
     elsif params[:spam] ==true
-      @emails = Email.where(spam: true).where('user_id IS NOT NULL').order('created_at desc')
-    else
-      @emails = Email.where(spam: false).where('user_id IS NOT NULL').order('created_at desc')
+      @conversations = Conversation.includes(:emails).where(spam: true).where('user_id IS NOT NULL').order('created_at desc')
+    elsif params[:archived] ==true
+      @conversations = Conversation.includes(:emails).where(archived: true).where('user_id IS NOT NULL').order('created_at desc')
     end
-    
     @archived = params[:archived]
     @sent = params[:sent]
     @spam = params[:spam]
@@ -24,9 +25,14 @@ class EmailsController < ApplicationController
   # GET /emails/1
   def show
     # @email.save
-    @conv = @email.conversation
+    @conv = Conversation.includes(:emails).where(id: @email.id).first
     @conv.update_attribute(:read, true)
-    @emails = Email.where(:conversation_id => @conv.id)
+    @emails = Email.where(:conversation_id => @conv.id,:deleted => false, :archived => params[:archived] ? true : false).order('updated_at desc')
+
+    respond_to do |format|
+      format.js { render :partial => "emails_accordeon.html.haml", :emails => @emails}
+      format.json { render json: @emails }
+    end
 
   end
 

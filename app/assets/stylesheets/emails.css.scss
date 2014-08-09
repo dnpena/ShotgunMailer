@@ -42,16 +42,22 @@
 				border: 1px;
 			}
 		}
-		.mails-btn{
-			border: 0px;
-			margin-top: 2px;
-		}
-		.checky{
-			margin-top: 15px;
-			z-index: 1;
-		}
-		.fa-user{
-			margin-top: 13px;
+		.email_nav {
+			width: 100%;
+			.mails-btn{
+				border: 0px;
+				margin-top: 2px;
+			}
+			.checky{
+				margin-top: 15px;
+				z-index: 1;
+			}
+			.fa-user{
+				margin-top: 13px;
+			}
+			.text-center.pull-down{
+				margin-top: 2px;
+			}
 		}
 	}
 
