@@ -23,6 +23,7 @@ DefaultInit::Application.routes.draw do
   resources :users
 
   #Email handling
+  delete "/emails/delete_many" => "emails#delete_many"
   post "/send_email" => "emails#send_email", :as => "send_email"
   resources :emails
   get "/conversations/:id" => "emails#show", :as => "conversation"

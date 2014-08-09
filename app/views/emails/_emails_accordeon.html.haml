@@ -1,22 +1,21 @@
-%br
-  .panel-group#accordion
-    - i = 0
-    -if !@emails.nil?
-      - @emails.each do |e|
-        - i+=1
-        .panel.panel-default
-          .panel-heading
-            %h4.panel-title
-              %a{'data-toggle' => "collapse", 'data-parent'=>"#accordion", href: '#collapse_'+i.to_s}
-                %b
-                  =e.sender
-                  -if e.user
-                    (Sent by #{e.user.to_s})
-              %span.pull-right= e.created_at.strftime('%d/%m/%Y %H:%M')
-          .panel-collapse.collapse{class: i==@emails.length ? 'in' : '', id: 'collapse_'+i.to_s}
-            .panel-subtitle 
-              %b to:
-              =e.recipient
-            .panel-body
-              %iframe.html-capsule{src: "about:blank", body_html: e.body_html, body_plain: e.body_plain}
-              -# e.body_html ? e.body_html.html_safe : e.body_plain.html_safe
+.panel-group#accordion
+  - i = 0
+  -if !@emails.nil?
+    - @emails.each do |e|
+      - i+=1
+      .panel.panel-default
+        .panel-heading
+          %h4.panel-title
+            %a{'data-toggle' => "collapse", 'data-parent'=>"#accordion", href: '#collapse_'+i.to_s}
+              %b
+                =e.sender
+                -if e.user
+                  (Sent by #{e.user.to_s})
+            %span.pull-right= e.created_at.strftime('%d/%m/%Y %H:%M')
+        .panel-collapse.collapse{class: i==@emails.length ? 'in' : '', id: 'collapse_'+i.to_s}
+          .panel-subtitle 
+            %b to:
+            =e.recipient
+          .panel-body
+            %iframe.html-capsule{src: "about:blank", body_html: e.body_html, body_plain: e.body_plain}
+            -# e.body_html ? e.body_html.html_safe : e.body_plain.html_safe

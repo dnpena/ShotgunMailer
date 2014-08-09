@@ -1,6 +1,6 @@
 %ul.nav
   %li
-    = link_to emails_path(), class: 'btn square-btn'+(!(@archived||@sent) ? ' disabled' : '') do
+    = link_to emails_path(), class: 'btn square-btn'+(!(@archived||@sent||@spam) ? ' disabled' : '') do
       %i.fa.fa-inbox
       %span{:style=>'text-align: center'} Show Inbox
   %li

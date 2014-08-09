@@ -32,6 +32,13 @@ header{
 }
 
 
+.nav.navbar-nav.pull-left{
+  visibility: hidden;
+  .divider{
+    display: flex;
+  }
+}
+
 @import "functions";
 .square-btn.btn{
   width: 100%;

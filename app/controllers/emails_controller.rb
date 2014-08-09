@@ -9,9 +9,7 @@ class EmailsController < ApplicationController
   # GET /emails
   def index
     if params[:sent]==nil
-      @conversations = Conversation.includes(:emails).where(:deleted => false, :archived => params[:archived] ? true : false).order('updated_at desc')
-      @emails = @conversations.first.emails
-      # @emails = Email.all
+      @conversations = Conversation.includes(:emails).where(:deleted => false, :archived => params[:archived] ? true : false, :spam => params[:spam] ? true : false).order('updated_at desc')
     elsif params[:spam] ==true
       @emails = Email.where(spam: true).where('user_id IS NOT NULL').order('created_at desc')
     else
@@ -20,6 +18,7 @@ class EmailsController < ApplicationController
     
     @archived = params[:archived]
     @sent = params[:sent]
+    @spam = params[:spam]
   end
 
   # GET /emails/1
@@ -118,6 +117,16 @@ class EmailsController < ApplicationController
     @email.destroy
     redirect_to emails_url, notice: 'Email was successfully destroyed.'
   end
+
+  def delete_many
+    id_to_destroy = params[:mails_to_delete]
+    id_to_destroy.each do |e_id|
+      Conversation.find(e_id).destroy
+    end
+    @conversations = Conversation.includes(:emails).where(:deleted => false, :archived => params[:archived] ? true : false, :spam => params[:spam] ? true : false).order('updated_at desc') 
+    render :partial => "emails_navigation.html.haml", :conversations => @conversations
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

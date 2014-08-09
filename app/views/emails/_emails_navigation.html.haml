@@ -1,17 +1,17 @@
-.container-search
-  .search_bar
-    %input{'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Search'}
-  .search_button
-    %button{'type' => 'submit', 'class' => 'btn btn-default square-btn'} Submit
-.list_mails
+-# .container-search
+-#   .search_bar
+-#     %input{'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Search'}
+-#   .search_button
+-#     %button{'type' => 'submit', 'class' => 'btn btn-default square-btn'} Search
+.email_nav
   -if @conversations
     - @conversations.each do |conv|
-      = link_to email_path(conv,'json'),id: "mail #{conv.id}",class: 'btn btn-default square-btn mails-btn' do
-        .col-md-2
-          = check_box_tag "box #{conv.id}", nil,false,class: 'checky'
-        .col-md-1
-          %i.fa.fa-user
-        .col-md-9
+      .col-md-2
+        = check_box_tag "#{conv.id}", nil,false,class: 'checky'
+      .col-md-1
+        %i.fa.fa-user
+      .col-md-9
+        = link_to email_path(conv,'json'),id: "mail #{conv.id}",class: conv.read ? 'btn btn-default square-btn mails-btn' : 'btn btn-default alert-warning square-btn mails-btn'  do
           %td.senders
             = @sent ? conv.sender : conv.get_senders
             .subjects

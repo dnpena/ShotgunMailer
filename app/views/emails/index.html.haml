@@ -6,25 +6,6 @@
     =render partial:"emails_navigation"
 
   .mail_panel
-    .navigation
-      -# = link_to emails_path(), class: 'btn btn-default square-btn'+((@archived||@sent) ? 'disabled' : '') do
-      -#   %span{:style=>'text-align: center'} Show Inbox
-      -#   %i.fa.fa-inbox
-
-      -# = link_to emails_path(archived: true), class: 'btn btn-default square-btn'+((@archived) ? 'disabled' : '') do
-      -#   %span{:style=>'text-align: center'} Archive
-      -#   %i.fa.fa-archive
-
-      -# = link_to emails_path(sent: true), class: 'btn btn-default square-btn'+((@sent) ? 'disabled' : '') do
-      -#   %i.fa.fa-envelope
-      -#   %span{:style=>'text-align: center'} Show Sent
-
-    .actual-email
-      .panel.panel-primary
-        -# .panel-heading
-        -#   .from
-        -# .panel-body
-        -#   .mail-text
-        =render partial:"emails_accordeon"
+    =render partial:"emails_accordeon"
 
  

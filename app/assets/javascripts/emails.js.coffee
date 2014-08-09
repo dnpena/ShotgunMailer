@@ -42,13 +42,12 @@ $ ->
 		success: (data, textStatus, jqXHR) ->
 			mail = $.parseJSON(data)
 			for key, value of mail
-
 					$('.navigation').html(value[0].subject)
 					panel_primerio = $("<div/>").addClass "panel panel-primary"
 					$('.actual-email').html(panel_primerio).css('visibility', 'visible');
 
 					for a, b of value
-						console.log b
+						# console.log b
 						panHeading = $("<div/>").addClass "panel-heading"
 						panelFrom = $("<div/>").addClass "from"
 						panelFrom.html(b.sender)
@@ -61,7 +60,34 @@ $ ->
 						$('.panel.panel-primary').append(panHeading).append(panelBody)
 
 	$('.checky').click ->
-		$(this).hide();
+		selects = $('.checky:checked').length 
+		if selects>0
+			$('.nav.navbar-nav.pull-left').css('visibility', 'visible');
+		else	
+			$('.nav.navbar-nav.pull-left').css('visibility', 'hidden');
+
+	$('.deletebtn').click ->
+		$('.checky:checked').length 
+		all_ids = []
+		i=0
+		$('.checky:checked').each ->
+			id = $(this).attr("id")
+			all_ids[i] = id
+			i++
+			return
+		path = '/emails/delete_many'
+		$.ajax path,
+		type: 'DELETE'
+		dataType: 'html'
+		data: {mails_to_delete: all_ids}
+		error: (jqXHR, textStatus, errorThrown) ->
+			$('body').append "AJAX Error: #{textStatus}"
+		success: (data, textStatus, jqXHR) ->
+			$('.emails_list').html(data)
+
+
+	$('.archivebtn').click ->
+		selects = $('.checky:checked').length 
 
 	
 		

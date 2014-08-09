@@ -18,4 +18,9 @@
 	- else
 		%li 
 			= link_to t('common.nav.login'), log_in_path
-			
+
+%ul.nav.navbar-nav.pull-left
+	%li.divider.archivebtn
+		%a.fa.fa-archive{href: "#"} Archive
+	%li.divider.deletebtn
+		%a.fa.fa-trash-o{href: "#"} Delete

@@ -16,12 +16,13 @@
 		width: 20%;
 		margin-right: 0px;
 		background-color: #282828;
-		color: #C0C0C0;
+		color: #E0E0E0;
 		
-		%span{
-			color: #FFFFFF;
-		}
 		.disabled{
+			color: #FFFFFF;
+
+		}
+		.btn.square-btn{
 			color: #E0E0E0;
 		}
 		
@@ -41,15 +42,23 @@
 				border: 1px;
 			}
 		}
-
 		.mails-btn{
 			border: 0px;
+			margin-top: 2px;
+		}
+		.checky{
+			margin-top: 15px;
+			z-index: 1;
+		}
+		.fa-user{
+			margin-top: 13px;
 		}
 	}
 
 	.mail_panel{
 		width: 45%;
 		// visibility: hidden;
+		background-color: #E0E0E0;
 
 		.navigation{
 			background-color: #484857;
@@ -62,26 +71,6 @@
 				width: 130px;
 				@include radius(0px);
 			}
-		}
-		.actual-email{
-			height: 400px;
-		}
-		.panel.panel-primary{
-			border-radius: 0px;
-			margin: 10px;
-			border-color: #383838;
-		}
-		.panel-heading{
-			border-radius: 0px;
-			border-color: #383838;
-		}
-		.panel-body{
-		border-radius: 0px;
-		border-color: #383838;
-		}
-		.panel-body{
-		border-radius: 0px;
-		border-color: #383838;
 		}
 	
 	}
