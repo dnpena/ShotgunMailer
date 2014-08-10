@@ -1,4 +1,8 @@
 %ul.nav
+  %li{:style=>'text-align: center'}
+    = link_to new_email_path, class: 'btn-info square-btn' do
+      %i.fa.fa-edit 
+      %span{:style=>'text-align: center'} New Email
   %li
     = link_to emails_path(), class: 'btn square-btn'+(!(@archived||@sent||@spam) ? ' disabled' : '') do
       %i.fa.fa-inbox
@@ -15,7 +19,3 @@
     = link_to emails_path(spam: true), class: 'btn square-btn'+((@spam) ? ' disabled' : '') do
       %i.fa.fa-envelope
       %span{:style=>'text-align: center'} Spam 
-  %li
-    = link_to new_email_path, class: 'btn square-btn' do
-      %i.fa.fa-edit 
-      %span{:style=>'text-align: center'} New Email

@@ -20,4 +20,11 @@ class Conversation < ActiveRecord::Base
 		self.update_attribute :deleted, true
 		self.emails.update_all deleted: true
 	end
+
+	def archive
+		self.update_attribute :archived, true
+		self.emails.update_all archived: true
+	end
+
+
 end

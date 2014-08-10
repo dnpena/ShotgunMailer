@@ -133,6 +133,14 @@ class EmailsController < ApplicationController
     render :partial => "emails_navigation.html.haml", :conversations => @conversations
   end
 
+  def archive_many
+    id_to_archive = params[:mails_to_archive]
+    id_to_archive.each do |e_id|
+      Conversation.find(e_id).archive
+    end
+    @conversations = Conversation.includes(:emails).where(:deleted => false, :archived => params[:archived] ? true : false, :spam => params[:spam] ? true : false).order('updated_at desc') 
+    render :partial => "emails_navigation.html.haml", :conversations => @conversations
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -53,7 +53,7 @@ $ ->
 			$('.nav.navbar-nav.pull-left').css('visibility', 'hidden');
 
 	$('.deletebtn').click ->
-		$('.checky:checked').length 
+
 		all_ids = []
 		i=0
 		$('.checky:checked').each ->
@@ -66,6 +66,25 @@ $ ->
 		type: 'DELETE'
 		dataType: 'html'
 		data: {mails_to_delete: all_ids}
+		error: (jqXHR, textStatus, errorThrown) ->
+			$('body').append "AJAX Error: #{textStatus}"
+		success: (data, textStatus, jqXHR) ->
+			$('.emails_list').html(data)
+
+	$('.archivebtn').click ->
+
+		all_ids = []
+		i=0
+		$('.checky:checked').each ->
+			id = $(this).attr("id")
+			all_ids[i] = id
+			i++
+			return
+		path = '/emails/archive_many'
+		$.ajax path,
+		type: 'POST'
+		dataType: 'html'
+		data: {mails_to_archive: all_ids}
 		error: (jqXHR, textStatus, errorThrown) ->
 			$('body').append "AJAX Error: #{textStatus}"
 		success: (data, textStatus, jqXHR) ->

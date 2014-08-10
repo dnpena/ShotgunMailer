@@ -65,6 +65,12 @@
 		width: 45%;
 		// visibility: hidden;
 		background-color: #E0E0E0;
+		.panel-group{
+			.panel-heading{
+				color: white;
+				background-color: #5bc0de;
+			}
+		}
 
 		.navigation{
 			background-color: #484857;
